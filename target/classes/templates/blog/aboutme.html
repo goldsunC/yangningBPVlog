@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">阳寜</h2>
+            <a href="/" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="/home" class="m-item item m-mobile-hide"><i class="book icon"></i>博客</a>
+            <a href="/types/1" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="/tags/1" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+            <a href="/archive" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+            <a href="/yangning" class="active m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+            <div class="right m-item item m-mobile-hide">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-top-right m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<!--中间内容-->
+<div class="m-container m-padded-tb-big">
+    <div class="m-container m-padded-tb-big">
+        <div class="ui center aligned attached segment">
+            <div class="ui horizontal">
+                <div class="item">
+                    <img src="/images/aboutme.jpg" alt="" class="ui avatar image" style="width: 300px;height: 300px">
+                </div>
+            </div>
+            <br>
+            <div class="ui header" style="font-size: 30px">阳寜</div>
+            <p class="m-text" style="font-size: 20px;">本科通信，一个计算机爱好者，也正在计算机的道路上向前奔跑<br>梦想有一天创造出属于自己的Jarvis。</p>
+            <div class="ui bottom attached center aligned">
+                <a href="https://github.com/goldsunC" target="_blank" class="ui icon circular button">
+                    <i class="github icon"></i>
+                </a>
+                <a href="#" class="ui qq icon circular button" data-content="2428022854" data-position="bottom center">
+                    <i class="qq icon"></i>
+                </a>
+                <a href="#" class="ui wechat icon circular button">
+                    <i class="wechat icon"></i>
+                </a>
+            </div>
+            <div class="ui wechat-qr flowing popup transition hidden">
+                <img src="./images/wechat.jpg" alt="" class="ui rounded image">
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="ui stackable">
+            <div class="ui top attached segment center aligned">
+                <div class="ui header">关于我</div>
+            </div>
+            <div class="ui attached segment center aligned">
+                <p class="m-text">其实没什么好说</p>
+                <p class="m-text">要对一切充满热爱</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<!--底部footer-->
+<footer class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">第一篇文章</a>
+                    <a href="#" class="item">第二篇文章</a>
+                    <a href="#" class="item">第三篇文章</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email:QQ@qq.com</a>
+                    <a href="#" class="item">QQ:2428022854</a>
+
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">阳寜</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">这是阳寜的个人博客，会分享有趣的事情！</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2022 Designed by 阳寜
+            <br><a href="https://beian.miit.gov.cn">豫ICP备2022006869号</a>
+        </p>
+    </div>
+</footer>
+
+<script src="/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $('.wechat').popup({
+        popup : $('.wechat-qr'),
+        position : 'bottom center'
+    });
+    $('.qq').popup();
+
+</script>
+</body>
+</html>

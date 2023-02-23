@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangningBPVlog.boot.mapper.userMapper">
+
+    <insert id="registerUser" parameterType="com.yangningBPVlog.boot.entity.User">
+        insert into yangningBPVlog.t_user(id, avatar, creat_time, email, nick_name, pass_word, type, update_time, user_name)
+        values (#{id},#{avatar},#{creatTime},#{email},#{nickName},#{passWord},#{type},#{updateTime},#{userName})
+    </insert>
+    <select id="queryUserByEmail" resultType="com.yangningBPVlog.boot.entity.User">
+        select * from yangningBPVlog.t_user where email=#{email}
+    </select>
+</mapper>

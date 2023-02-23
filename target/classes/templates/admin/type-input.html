@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>分类新增</title>
+</head>
+<body style="background: none">
+
+<!--导航栏-->
+<nav class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">写博客</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="/admin">后台首页</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="m-container m-padded-tb-large">
+    <div class="ui container">
+        <form action="/admin/types/submit" method="post" class="ui form">
+
+            <div class="field">
+                <div class="ui left labeled input">
+                    <label class="ui teal basic label">名称</label>
+                    <input type="text" name="name" placeholder="分类名称">
+                </div>
+            </div>
+
+            <div class="ui right aligned container">
+<!--                go(-1)返回上一个页面-->
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button class="ui teal submit button">提交</button>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+
+
+<script src="/layui/layui.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+<script>
+
+    $('.ui.dropdown').dropdown();
+
+    //表单验证，防止一切东西没有输入直接提交了
+    $('.ui.form').form({
+        fields : {
+            title : {
+                identifier : 'title',
+                rules : [{
+                    type : 'empty', //非空验证
+                    prompt : '标题：请输入博客标题'
+                }]
+            },
+            content : {
+                identifier: 'preContent',
+                rules: [{
+                    type: 'empty',
+                    prompt: '正文：请输入博客内容'
+                }]
+            }
+        }
+    });
+
+</script>
+
+
+
+</body>
+</html>

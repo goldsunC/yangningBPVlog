@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yangningBPVlog.boot.mapper.articleMapper">
+
+    <resultMap id="blog_user_type" type="com.yangningBPVlog.boot.entity.Blog">
+<!--        左边column是查询出来的标题，右边的property是Blog的属性名-->
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="content" property="content"></result>
+        <result column="summary" property="summary"></result>
+        <result column="first_picture" property="firstPicture"></result>
+        <result column="flag" property="flag"></result>
+        <result column="views" property="views"></result>
+        <result column="appreciation" property="appreciation"></result>
+        <result column="share_statement" property="shareStatement"></result>
+        <result column="comment_tabled" property="commentTabled"></result>
+        <result column="published" property="published"></result>
+        <result column="recommend" property="recommend"></result>
+        <result column="creat_time" property="creatTime"></result>
+        <result column="update_time" property="updateTime"></result>
+
+        <collection property="user" ofType="com.yangningBPVlog.boot.entity.User">
+            <id column="uid" property="id"></id>
+            <result column="nick_name" property="nickName"></result>
+            <result column="user_name" property="userName"></result>
+            <result column="pass_word" property="passWord"></result>
+            <result column="email" property="email"></result>
+            <result column="avatar" property="avatar"></result>
+            <result column="type" property="type"></result>
+            <result column="ucreat_time" property="creatTime"></result>
+            <result column="uupdate_time" property="updateTime"></result>
+        </collection>
+
+        <collection property="type" ofType="com.yangningBPVlog.boot.entity.Type">
+            <id column="tid" property="id"></id>
+            <result column="tname" property="name"></result>
+        </collection>
+
+    </resultMap>
+
+    <select id="queryBlogById" resultMap="blog_user_type">
+        select t_blog.id,t_blog.title,t_blog.content,
+               t_blog.summary,t_blog.first_picture,t_blog.flag,t_blog.views,
+               t_blog.appreciation,t_blog.share_statement,
+               t_blog.comment_tabled,t_blog.published,
+               t_blog.recommend,t_blog.creat_time,t_blog.update_time,
+               t_user.id as uid,t_user.nick_name,t_user.user_name,
+               t_user.pass_word,t_user.email,t_user.avatar,t_user.type,
+               t_user.creat_time as ucreat_time,
+               t_user.update_time as uupdate_time,
+               t_type.id as tid,t_type.name as tname
+        from yangningBPVlog.t_blog,yangningBPVlog.t_user,yangningBPVlog.t_type
+        where t_blog.id=#{id} and t_type.id=t_blog.type_id
+    </select>
+
+    <select id="queryBlogTagById" resultType="com.yangningBPVlog.boot.entity.Tag">
+        select yangningBPVlog.t_tag.id,yangningBPVlog.t_tag.name
+        from t_tag join t_blog_tags on t_tag.id = t_blog_tags.tags_id
+                   join t_blog on t_blog_tags.blogs_id = t_blog.id where t_blog.id=#{id};
+    </select>
+
+    <resultMap id="blogs" type="com.yangningBPVlog.boot.entity.Blog">
+        <!--        左边column是查询出来的标题，右边的property是Blog的属性名-->
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="content" property="content"></result>
+        <result column="summary" property="summary"></result>
+        <result column="first_picture" property="firstPicture"></result>
+        <result column="flag" property="flag"></result>
+        <result column="views" property="views"></result>
+        <result column="appreciation" property="appreciation"></result>
+        <result column="share_statement" property="shareStatement"></result>
+        <result column="comment_tabled" property="commentTabled"></result>
+        <result column="published" property="published"></result>
+        <result column="recommend" property="recommend"></result>
+        <result column="creat_time" property="creatTime"></result>
+        <result column="update_time" property="updateTime"></result>
+
+        <collection property="user" ofType="com.yangningBPVlog.boot.entity.User">
+            <id column="uid" property="id"></id>
+            <result column="nick_name" property="nickName"></result>
+            <result column="user_name" property="userName"></result>
+            <result column="pass_word" property="passWord"></result>
+            <result column="email" property="email"></result>
+            <result column="avatar" property="avatar"></result>
+            <result column="type" property="type"></result>
+            <result column="ucreat_time" property="creatTime"></result>
+            <result column="uupdate_time" property="updateTime"></result>
+        </collection>
+
+        <collection property="type" ofType="com.yangningBPVlog.boot.entity.Type">
+            <id column="tid" property="id"></id>
+            <result column="tname" property="name"></result>
+        </collection>
+
+    </resultMap>
+    <select id="queryAllBlogs" resultMap="blogs">
+        select t_blog.id,t_blog.title,t_blog.content,
+               t_blog.summary,t_blog.first_picture,t_blog.flag,
+               t_blog.views,t_blog.appreciation,t_blog.share_statement,
+               t_blog.comment_tabled,t_blog.published,
+               t_blog.recommend,t_blog.creat_time,t_blog.update_time,
+               t_user.id uid,t_user.nick_name,t_user.user_name,
+               t_user.pass_word,t_user.email,t_user.avatar,t_user.type,
+               t_user.creat_time ucreat_time,t_user.update_time uupdate_time,
+               t_type.name tname
+        from yangningBPVlog.t_blog,yangningBPVlog.t_user,yangningBPVlog.t_type
+        where t_type.id=t_blog.type_id
+    </select>
+
+    <select id="queryRecommendBlogs" resultType="java.lang.Long">
+        select t_blog.id from t_blog where recommend=1
+        order by id desc limit 5;
+    </select>
+</mapper>
