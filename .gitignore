@@ -23,6 +23,6 @@
 hs_err_pid*
 
 #常用忽略文件
-target/
-.idea
+target/*
+.idea/*
 yangningBPVlog.iml
